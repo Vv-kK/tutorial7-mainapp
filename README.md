@@ -58,12 +58,12 @@ You can install Postman via this website: https://www.postman.com/downloads/
     -   [✅] Commit: `Implement delete function in Subscriber repository.`
     -   [✅] Write answers of your learning module's "Reflection Publisher-1" questions in this README.
 -   **STAGE 2: Implement services and controllers**
-    -   [ ] Commit: `Create Notification service struct skeleton.`
-    -   [ ] Commit: `Implement subscribe function in Notification service.`
-    -   [ ] Commit: `Implement subscribe function in Notification controller.`
-    -   [ ] Commit: `Implement unsubscribe function in Notification service.`
-    -   [ ] Commit: `Implement unsubscribe function in Notification controller.`
-    -   [ ] Write answers of your learning module's "Reflection Publisher-2" questions in this README.
+    -   [✅] Commit: `Create Notification service struct skeleton.`
+    -   [✅] Commit: `Implement subscribe function in Notification service.`
+    -   [✅] Commit: `Implement subscribe function in Notification controller.`
+    -   [✅] Commit: `Implement unsubscribe function in Notification service.`
+    -   [✅] Commit: `Implement unsubscribe function in Notification controller.`
+    -   [✅] Write answers of your learning module's "Reflection Publisher-2" questions in this README.
 -   **STAGE 3: Implement notification mechanism**
     -   [ ] Commit: `Implement update method in Subscriber model to send notification HTTP requests.`
     -   [ ] Commit: `Implement notify function in Notification service to notify each Subscriber.`
@@ -84,5 +84,10 @@ This is the place for you to write reflections:
 3. DashMap merupakan sebuah HashMap yang telah dioptimasi untuk concurrency. Dampaknya DashMap dapat diakses oleh berbagai thread dan dipastikan datanya akan selalu up-to-date. Di sisi lain, singleton pattern merupakan suatu design pattern yang memastikan hanya ada satu instance dari sebuah class. Hal ini menciptakan suatu titik akses yang global bagi semua thread. Hal ini bermanfaat ketika ada class yang me-manage shared data resource dan perlu mempertahankan suatu state tertentu. DashMap menurut saya tetap dibutuhkan karena ada kalanya dibutuhkn struktur data yang cara kerjanya sama seperti HashMap. Maka dari itu, DashMap juga bisa digunakan untuk program yang relatif simpel sehingga tidak perlu mengimplementasi singleton.
 
 #### Reflection Publisher-2
+1. Service bertanggung jawab untuk handle kode yang merupakan business logic dari programnya, misalnya mengolah data yang didapatkan dari Repository. Sedangkan Repository merupakan bagian yang berhubungan langsung dengan database dan mengubah isi dari database. Service dan Repository perlu dipisahkan dari Model agar fungsionalitas lebih khusus dan kecil untuk tiap modulnya. Hal ini memenuhi prinsip single responsibility yang memberi banyak dampak positif, seperti memudahkan decoupling, meningkatkan maintainability, memudahkan pembuatan unit test, dan kode lebih bisa di-reuse. 
+
+2. Jika kode yang dibuat hanya menggunakan Model, maka semua macam fungsionalitas (definisi suatu model, business logic, mengakses database, dan mengatur routing) akan digabung menjadi satu function semua. Hal ini akan menciptakan kode yang sangat kompleks dan sulit untuk dibaca maupun di-maintain. Pembuatan unit testing juga akan sangat sulit. Selain itu, akan tercipta coupling yang tinggi sehingga akan menyebabkan banyak perubahan yang harus dilakukan ketika ada satu bagian yang ingin diubah. Hal ini sangatlah tidak direkomendasikan dan bukan best practice dalam membuat codebase.
+
+3. Saya merasa bahwa Postman sangat membantu agar saya mengetahui apakah endpoint yang saya buat telah berfungsi sesuai dengan yang saya harapkan. Meskipun saya bisa menggunakan inspect element, menurut saya penyajian di Postman lebih rapih dan lebih memudahkan saya dalam memvalidasi hasil pekerjaan saya. Selain itu, Postman juga bisa digunakan untuk mencoba mengirimkan data apa saja pada endpoint yang saya buat dan melihat hasilnya. Hal ini sangat bermanfaat untuk memastikan program bekerja dengan baik pada segala kondisi. Saya tertarik untuk explore berbagai tipe data yang dapat dikirim pada body request, params, mencoba berbagai authorization yang disediakan.
 
 #### Reflection Publisher-3
