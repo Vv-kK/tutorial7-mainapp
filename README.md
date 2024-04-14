@@ -50,13 +50,13 @@ You can install Postman via this website: https://www.postman.com/downloads/
 ## Mandatory Checklists (Publisher)
 -   [ ] Clone https://gitlab.com/ichlaffterlalu/bambangshop to a new repository.
 -   **STAGE 1: Implement models and repositories**
-    -   [ ] Commit: `Create Subscriber model struct.`
-    -   [ ] Commit: `Create Notification model struct.`
-    -   [ ] Commit: `Create Subscriber database and Subscriber repository struct skeleton.`
-    -   [ ] Commit: `Implement add function in Subscriber repository.`
-    -   [ ] Commit: `Implement list_all function in Subscriber repository.`
-    -   [ ] Commit: `Implement delete function in Subscriber repository.`
-    -   [ ] Write answers of your learning module's "Reflection Publisher-1" questions in this README.
+    -   [✅] Commit: `Create Subscriber model struct.`
+    -   [✅] Commit: `Create Notification model struct.`
+    -   [✅] Commit: `Create Subscriber database and Subscriber repository struct skeleton.`
+    -   [✅] Commit: `Implement add function in Subscriber repository.`
+    -   [✅] Commit: `Implement list_all function in Subscriber repository.`
+    -   [✅] Commit: `Implement delete function in Subscriber repository.`
+    -   [✅] Write answers of your learning module's "Reflection Publisher-1" questions in this README.
 -   **STAGE 2: Implement services and controllers**
     -   [ ] Commit: `Create Notification service struct skeleton.`
     -   [ ] Commit: `Implement subscribe function in Notification service.`
@@ -77,6 +77,11 @@ This is the place for you to write reflections:
 ### Mandatory (Publisher) Reflections
 
 #### Reflection Publisher-1
+1. Menurut saya, kasus BambangShop belum dibutuhkan interface (atau trait di Rust). Hal ini karena hanya ada satu jenis Subscriber disini. Hasilnya hanya ada satu class yang menjadi Observer. Jika sudah banyak class yang menjadi Observer, maka barulah dibutuhkan sebuah interface. Maka dari itu, saya merasa satu model struct masih cukup untuk kasus BambangShop.
+
+2. Dalam kasus ini, menggunakan Vec atau list tidaklah cukup. Vec dalam Rust memperbolehkan adanya data yang duplikat. Sedangkan DashMap akan memastikan bahwa datanya unik karena tidak memperbolehkan duplikat. Selain itu, DashMap juga dibutuhkan untuk memetakan masing-masing id ke URL dari berbagai subscribernya agar tidak diperlukan 2 Vec berbeda untuk menyimpannya.
+
+3. DashMap merupakan sebuah HashMap yang telah dioptimasi untuk concurrency. Dampaknya DashMap dapat diakses oleh berbagai thread dan dipastikan datanya akan selalu up-to-date. Di sisi lain, singleton pattern merupakan suatu design pattern yang memastikan hanya ada satu instance dari sebuah class. Hal ini menciptakan suatu titik akses yang global bagi semua thread. Hal ini bermanfaat ketika ada class yang me-manage shared data resource dan perlu mempertahankan suatu state tertentu. DashMap menurut saya tetap dibutuhkan karena ada kalanya dibutuhkn struktur data yang cara kerjanya sama seperti HashMap. Maka dari itu, DashMap juga bisa digunakan untuk program yang relatif simpel sehingga tidak perlu mengimplementasi singleton.
 
 #### Reflection Publisher-2
 
