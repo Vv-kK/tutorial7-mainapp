@@ -48,7 +48,7 @@ You can install Postman via this website: https://www.postman.com/downloads/
     (You might want to use `cargo check` if you only need to verify your work without running the app.)
 
 ## Mandatory Checklists (Publisher)
--   [ ] Clone https://gitlab.com/ichlaffterlalu/bambangshop to a new repository.
+-   [✅] Clone https://gitlab.com/ichlaffterlalu/bambangshop to a new repository.
 -   **STAGE 1: Implement models and repositories**
     -   [✅] Commit: `Create Subscriber model struct.`
     -   [✅] Commit: `Create Notification model struct.`
@@ -65,11 +65,11 @@ You can install Postman via this website: https://www.postman.com/downloads/
     -   [✅] Commit: `Implement unsubscribe function in Notification controller.`
     -   [✅] Write answers of your learning module's "Reflection Publisher-2" questions in this README.
 -   **STAGE 3: Implement notification mechanism**
-    -   [ ] Commit: `Implement update method in Subscriber model to send notification HTTP requests.`
-    -   [ ] Commit: `Implement notify function in Notification service to notify each Subscriber.`
-    -   [ ] Commit: `Implement publish function in Program service and Program controller.`
-    -   [ ] Commit: `Edit Product service methods to call notify after create/delete.`
-    -   [ ] Write answers of your learning module's "Reflection Publisher-3" questions in this README.
+    -   [✅] Commit: `Implement update method in Subscriber model to send notification HTTP requests.`
+    -   [✅] Commit: `Implement notify function in Notification service to notify each Subscriber.`
+    -   [✅] Commit: `Implement publish function in Program service and Program controller.`
+    -   [✅] Commit: `Edit Product service methods to call notify after create/delete.`
+    -   [✅] Write answers of your learning module's "Reflection Publisher-3" questions in this README.
 
 ## Your Reflections
 This is the place for you to write reflections:
@@ -91,3 +91,8 @@ This is the place for you to write reflections:
 3. Saya merasa bahwa Postman sangat membantu agar saya mengetahui apakah endpoint yang saya buat telah berfungsi sesuai dengan yang saya harapkan. Meskipun saya bisa menggunakan inspect element, menurut saya penyajian di Postman lebih rapih dan lebih memudahkan saya dalam memvalidasi hasil pekerjaan saya. Selain itu, Postman juga bisa digunakan untuk mencoba mengirimkan data apa saja pada endpoint yang saya buat dan melihat hasilnya. Hal ini sangat bermanfaat untuk memastikan program bekerja dengan baik pada segala kondisi. Saya tertarik untuk explore berbagai tipe data yang dapat dikirim pada body request, params, mencoba berbagai authorization yang disediakan.
 
 #### Reflection Publisher-3
+1. BambangShop menggunakan variasi push model. Hal ini dapat dilihat dari create, delete, dan publish product yang akan men-trigger terbuatnya notifikasi untuk subscribers setiap kali functionnya dieksekusi. Object Product disini merupakan publishers dan subscribers merupakan observer. Product disini melakukan pengiriman data sedangkan subscribers hanya menunggu dan menerima data. Maka dari itu, dapat disimpulkan bahwa BambangShop menggunakan push model.
+
+2. Keuntungan yang didapatkan dari pull model adalah setiap subscriber dapat menentukan apakah perubahan data relevan atau tidak bagi mereka. Hal ini membuat notifikasi menjadi lebih sesuai untuk tiap subscribernya. Pull model juga mengurangi coupling antara product dan subscribers. Namun, subscribers jadi harus mengetahui struktur dari product dan kodenya menjadi lebih ribet padahal kebutuhan sistem masih cukup simpel. 
+
+3. Jika tidak dilakukan multi threading pada proses pengiriman notifikasi, maka akan terjadi bottleneck saat jumlah subscriber sangatlah banyak. Setiap subscriber itu harus dibuatkan notifikasi satu-satu secara bergantian sehingga antriannya akan sangat panjang dan terbatas oleh kecepatan komputasi mesin. Maka dari itu, penggunaan multi threading akan lebih efisien.
